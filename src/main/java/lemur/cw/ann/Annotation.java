@@ -34,7 +34,7 @@ public class Annotation {
 
         if (cols.length != NUM_COLUMNS_CONVERTED) {
             throw new IllegalArgumentException(String.format(
-                    "Incorrect line format. Expected 5 columns, found %d", cols.length));
+                    "Incorrect line format. Expected %d columns, found %d", NUM_COLUMNS_CONVERTED, cols.length));
         }
 
         int start = Integer.parseInt(cols[3]);
