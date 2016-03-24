@@ -9,7 +9,7 @@ public class Annotation {
     /**
      * Number of columns in the converted format (6 original + 1)
      */
-    public static final int NUM_COLUMNS_CONVERTED = 7;
+    public static final int NUM_COLUMNS_CONVERTED = 8;
     
     public final String trecId;
     public final int start;
@@ -37,13 +37,13 @@ public class Annotation {
                     "Incorrect line format. Expected 5 columns, found %d", cols.length));
         }
 
-        int start = Integer.parseInt(cols[2]);
-        int end = Integer.parseInt(cols[3]);
-        float scoreCtx = Float.parseFloat(cols[4]);
-        float scoreInd =  Float.parseFloat(cols[5]);
-        String mbId = cols[6];
+        int start = Integer.parseInt(cols[3]);
+        int end = Integer.parseInt(cols[4]);
+        float scoreCtx = Float.parseFloat(cols[5]);
+        float scoreInd =  Float.parseFloat(cols[6]);
+        String mbId = cols[7];
 
-        return new Annotation(cols[0], cols[1], start, end, scoreCtx, scoreInd, mbId);
+        return new Annotation(cols[0], cols[2], start, end, scoreCtx, scoreInd, mbId);
     }
     
     public static Iterator<Annotation> iterator(final Iterator<String> lines) {

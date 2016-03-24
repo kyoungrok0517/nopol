@@ -1,6 +1,7 @@
 package lemur.cw.ann;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -107,7 +108,15 @@ public class Matcher {
 
     public static byte[] encodeDocument(WarcEntry entry, String encoding)
             throws IOException {
-        String encoded = new String(entry.content(), encoding);
+        String encoded = "";
+
+        try {
+            encoded = new String(entry.content(), encoding);
+        } catch (UnsupportedEncodingException e) {
+//            System.err.println(encoding);
+            encoded = new String(entry.content(), "UTF-8");
+        }
+
         return encoded.getBytes("UTF-8");
     }
 
